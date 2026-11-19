@@ -757,11 +757,19 @@
     </main>
   </div>
 
+  <!-- FILE NHẠC NỀN MP3 THU ÂM THỰC TẾ -->
+  <audio id="bgAudio" src="music.mp3" loop preload="auto"></audio>
+
   <!-- THANH ĐIỀU KHIỂN NHẠC & THẢ TIM ĐÁY MÀN HÌNH -->
   <div class="bottom-bar">
     <button class="control-btn music-btn" id="musicBtn" onclick="toggleMusic()">
       <i data-lucide="disc" class="music-disc" style="width: 17px; height: 17px;"></i>
-      <span id="musicStatus">Nhạc nền: Bật 🎵</span>
+      <span id="musicStatus">Nhạc: Ấm Áp 🎵</span>
+    </button>
+    <div class="divider-dot"></div>
+    <button class="control-btn" id="nextTrackBtn" onclick="nextMusicTrack()" title="Đổi bài nhạc khác">
+      <i data-lucide="skip-forward" style="width: 15px; height: 15px;"></i>
+      <span>Đổi nhạc</span>
     </button>
     <div class="divider-dot"></div>
     <button class="control-btn heart-btn" id="likeBtn" onclick="toggleLike()">
@@ -783,125 +791,32 @@
     lucide.createIcons();
 
     // ==========================================================
-    // 1. HỆ THỐNG NHẠC NỀN DU DƯƠNG (WEB AUDIO PIANO & MUSIC BOX)
-    // Tự động tạo giai điệu Canon / Gratitude ngọt ngào, 100% không bao giờ lỗi mạng
+    // 1. HỆ THỐNG NHẠC NỀN MP3 THU ÂM THỰC TẾ (ACOUSTIC & PIANO)
     // ==========================================================
-    let audioCtx = null;
+    const bgAudio = document.getElementById('bgAudio');
     let isPlayingMusic = false;
-    let musicInterval = null;
-    let masterGain = null;
+    let currentTrackIndex = 0;
 
-    // Giai điệu hợp âm & nốt nhạc ấm áp (Tone C Major / A Minor lãng mạn)
-    const melodySequence = [
-      // Bar 1: Cmaj7
-      { bass: 130.81, chord: [261.63, 329.63, 392.00, 493.88], notes: [659.25, 587.33, 523.25, 587.33] },
-      // Bar 2: G/B
-      { bass: 123.47, chord: [246.94, 293.66, 392.00, 493.88], notes: [587.33, 493.88, 392.00, 493.88] },
-      // Bar 3: Am7
-      { bass: 110.00, chord: [220.00, 261.63, 329.63, 392.00], notes: [523.25, 440.00, 329.63, 523.25] },
-      // Bar 4: Em7
-      { bass: 164.81, chord: [196.00, 246.94, 329.63, 392.00], notes: [493.88, 392.00, 329.63, 392.00] },
-      // Bar 5: Fmaj7
-      { bass: 174.61, chord: [261.63, 349.23, 440.00, 523.25], notes: [440.00, 523.25, 659.25, 587.33] },
-      // Bar 6: C/E
-      { bass: 164.81, chord: [261.63, 329.63, 392.00, 523.25], notes: [523.25, 392.00, 329.63, 392.00] },
-      // Bar 7: Dm7
-      { bass: 146.83, chord: [261.63, 293.66, 349.23, 440.00], notes: [440.00, 523.25, 587.33, 523.25] },
-      // Bar 8: G7sus4 -> G
-      { bass: 196.00, chord: [246.94, 293.66, 392.00, 493.88], notes: [587.33, 659.25, 587.33, 493.88] }
+    const musicTracks = [
+      { name: "Giai Điệu Ấm Áp", src: "music.mp3" },
+      { name: "Piano Cảm Xúc", src: "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Touching%20Moments%20Two%20-%20Higher.mp3" },
+      { name: "Ukulele Vui Tươi", src: "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Carefree.mp3" }
     ];
 
-    let currentBar = 0;
-    let currentStep = 0;
-
-    function initAudioEngine() {
-      if (audioCtx) return;
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioContextClass();
-      masterGain = audioCtx.createGain();
-      masterGain.gain.setValueAtTime(0.35, audioCtx.currentTime);
-      masterGain.connect(audioCtx.destination);
-    }
-
-    // Hàm gảy 1 nốt nhạc với âm sắc ấm áp như Piano & Music Box
-    function playWarmNote(freq, duration, volume = 0.2, type = 'sine', delay = 0) {
-      if (!audioCtx || !isPlayingMusic) return;
-      const now = audioCtx.currentTime + delay;
-
-      const osc1 = audioCtx.createOscillator();
-      const osc2 = audioCtx.createOscillator();
-      const noteGain = audioCtx.createGain();
-
-      osc1.type = type;
-      osc1.frequency.setValueAtTime(freq, now);
-
-      // Hòa âm bậc 2 nhẹ tạo tiếng chuông Music Box lung linh
-      osc2.type = 'triangle';
-      osc2.frequency.setValueAtTime(freq * 2, now);
-
-      const osc2Gain = audioCtx.createGain();
-      osc2Gain.gain.setValueAtTime(0.08, now);
-
-      // Envelope mềm mại (Attack nhẹ, Decay ngân vang như đàn Piano)
-      noteGain.gain.setValueAtTime(0.001, now);
-      noteGain.gain.linearRampToValueAtTime(volume, now + 0.04);
-      noteGain.gain.exponentialRampToValueAtTime(volume * 0.4, now + duration * 0.4);
-      noteGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-
-      osc1.connect(noteGain);
-      osc2.connect(osc2Gain);
-      osc2Gain.connect(noteGain);
-      noteGain.connect(masterGain);
-
-      osc1.start(now);
-      osc2.start(now);
-      osc1.stop(now + duration + 0.05);
-      osc2.stop(now + duration + 0.05);
-    }
-
-    function tickMusicStep() {
-      if (!isPlayingMusic || !audioCtx) return;
-      const bar = melodySequence[currentBar];
-
-      // Phách đầu mỗi ô nhịp: đánh nốt Bass ấm + rải hợp âm Piano
-      if (currentStep === 0) {
-        playWarmNote(bar.bass, 2.6, 0.22, 'sine', 0);
-        bar.chord.forEach((cFreq, idx) => {
-          playWarmNote(cFreq, 2.2, 0.08, 'sine', idx * 0.07);
-        });
-      }
-
-      // Giai điệu Music Box chính
-      const melodyFreq = bar.notes[currentStep];
-      if (melodyFreq) {
-        playWarmNote(melodyFreq, 1.4, 0.16, 'sine', 0);
-      }
-
-      currentStep++;
-      if (currentStep >= 4) {
-        currentStep = 0;
-        currentBar = (currentBar + 1) % melodySequence.length;
-      }
-    }
+    bgAudio.volume = 0.75;
 
     function startMusic() {
-      initAudioEngine();
-      if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-      }
-      if (isPlayingMusic) return;
-      isPlayingMusic = true;
-      updateMusicUI();
-      tickMusicStep();
-      musicInterval = setInterval(tickMusicStep, 580);
+      bgAudio.play().then(() => {
+        isPlayingMusic = true;
+        updateMusicUI();
+      }).catch(err => {
+        console.warn("Autoplay prevented:", err);
+      });
     }
 
     function stopMusic() {
+      bgAudio.pause();
       isPlayingMusic = false;
-      if (musicInterval) {
-        clearInterval(musicInterval);
-        musicInterval = null;
-      }
       updateMusicUI();
     }
 
@@ -913,12 +828,21 @@
       }
     }
 
+    function nextMusicTrack() {
+      currentTrackIndex = (currentTrackIndex + 1) % musicTracks.length;
+      const track = musicTracks[currentTrackIndex];
+      bgAudio.src = track.src;
+      bgAudio.load();
+      startMusic();
+    }
+
     function updateMusicUI() {
       const btn = document.getElementById('musicBtn');
       const status = document.getElementById('musicStatus');
+      const trackName = musicTracks[currentTrackIndex].name;
       if (isPlayingMusic) {
         btn.classList.add('playing');
-        status.innerText = 'Nhạc: Đang phát 🎵';
+        status.innerText = `${trackName} 🎵`;
       } else {
         btn.classList.remove('playing');
         status.innerText = 'Nhạc: Đã tắt 🔇';
