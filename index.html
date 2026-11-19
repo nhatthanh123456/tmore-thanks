@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Gửi Những Bông Hồng TMORE 🌸 | Lời Cảm Ơn 19/11</title>
+  
+  <!-- Google Fonts hỗ trợ 100% Tiếng Việt tuyệt đẹp, không lỗi dấu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Dancing+Script:wght@600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --bg-dark: #090612;
+      --text-main: #ffffff;
+      --text-sub: #f6edff;
+      --primary-pink: #ff6b8b;
+      --secondary-gold: #ffe08a;
+      --accent-glow: rgba(255, 107, 139, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* KHÓA CUỘN TRANG - HIỂN THỊ TRỌN VẸN TRONG 1 MÀN HÌNH */
+    html, body {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      position: fixed;
+      font-family: 'Quicksand', sans-serif;
+      background: radial-gradient(circle at 50% 25%, #231440 0%, #120a24 55%, #06040b 100%);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ==========================================================
+       0. MÀN HÌNH MỞ THIỆP & KÍCH HOẠT NHẠC NỀN (INTRO OVERLAY)
+       ========================================================== */
+    .welcome-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: radial-gradient(circle at 50% 40%, rgba(35, 20, 64, 0.96) 0%, rgba(8, 5, 16, 0.98) 100%);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+    }
+
+    .welcome-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .envelope-box {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1.5px solid rgba(255, 182, 193, 0.35);
+      border-radius: 32px;
+      padding: 34px 26px;
+      text-align: center;
+      box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.65),
+        0 0 50px rgba(255, 107, 139, 0.3),
+        inset 0 2px 6px rgba(255, 255, 255, 0.35);
+      animation: floatEnvelope 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatEnvelope {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-8px) scale(1.015); }
+    }
+
+    .envelope-icon {
+      font-size: 3.6rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      filter: drop-shadow(0 6px 18px rgba(255, 107, 139, 0.5));
+      animation: pulseGift 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulseGift {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      25% { transform: scale(1.1) rotate(-5deg); }
+      75% { transform: scale(1.1) rotate(5deg); }
+    }
+
+    .envelope-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2rem, 6vw, 2.5rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff 0%, #ffb6c8 50%, #ff7597 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .envelope-sub {
+      font-size: 0.96rem;
+      color: #e6d7f7;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+
+    .open-card-btn {
+      background: linear-gradient(135deg, #ff7597 0%, #ff5277 50%, #d946ef 100%);
+      color: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      padding: 13px 30px;
+      border-radius: 999px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(255, 82, 119, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .open-card-btn:hover, .open-card-btn:active {
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 15px 38px rgba(255, 82, 119, 0.7);
+    }
+
+    /* ==========================================================
+       1. ĐÈN NỀN MA THUẬT & HẠT DỄ THƯƠNG
+       ========================================================== */
+    .magic-canvas {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .ambient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: 0.48;
+      animation: ambientFloat 18s ease-in-out infinite alternate;
+    }
+    .orb-1 {
+      width: 450px;
+      height: 450px;
+      background: #ff5277;
+      top: -120px;
+      left: -80px;
+    }
+    .orb-2 {
+      width: 480px;
+      height: 480px;
+      background: #8b5cf6;
+      bottom: -100px;
+      right: -80px;
+      animation-duration: 22s;
+    }
+    .orb-3 {
+      width: 340px;
+      height: 340px;
+      background: #f472b6;
+      top: 40%;
+      left: 25%;
+      opacity: 0.28;
+      animation-duration: 16s;
+    }
+
+    @keyframes ambientFloat {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.15); }
+      100% { transform: translate(-30px, 20px) scale(0.95); }
+    }
+
+    .cute-floater {
+      position: absolute;
+      bottom: -60px;
+      user-select: none;
+      pointer-events: none;
+      animation: floatUpward linear infinite;
+      z-index: 2;
+    }
+
+    @keyframes floatUpward {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+      15% { opacity: 0.9; }
+      85% { opacity: 0.9; }
+      100% {
+        transform: translateY(-115vh) translateX(55px) rotate(360deg) scale(1.25);
+        opacity: 0;
+      }
+    }
+
+    /* ==========================================================
+       2. TẦNG CÁC ẢNH BAY NỔI XUNG QUANH KHUNG CHỮ & ẢNH CUỐI
+       ========================================================== */
+    .floating-photos-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: auto;
+      overflow: hidden;
+    }
+
+    .photo-bubble {
+      position: absolute;
+      bottom: -260px;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 
+        0 14px 35px rgba(0, 0, 0, 0.55),
+        0 0 25px rgba(255, 107, 139, 0.35),
+        inset 0 0 15px rgba(255, 255, 255, 0.35);
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      background: #140f20;
+      animation: bubbleRise linear infinite;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+      will-change: transform, opacity;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-bubble:hover {
+      box-shadow: 
+        0 20px 45px rgba(255, 107, 139, 0.65),
+        0 0 40px rgba(255, 182, 193, 0.75);
+      transform: scale(1.14) !important;
+      z-index: 99 !important;
+    }
+
+    .photo-bubble img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .photo-bubble .glare {
+      position: absolute;
+      top: 6px;
+      left: 8px;
+      width: 50%;
+      height: 35%;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 80%);
+      border-radius: 20px;
+      pointer-events: none;
+      filter: blur(1px);
+      transform: rotate(-12deg);
+      z-index: 2;
+    }
+
+    .photo-bubble .sticker {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      background: rgba(15, 11, 25, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    @keyframes bubbleRise {
+      0% {
+        transform: translateY(0) translateX(0) rotate(var(--rot-start)) scale(0.85);
+        opacity: 0;
+        filter: blur(14px);
+      }
+      10% {
+        opacity: 0.94;
+        filter: blur(0px);
+      }
+      50% {
+        transform: translateY(-58vh) translateX(var(--drift-mid)) rotate(var(--rot-mid)) scale(1);
+        opacity: 0.94;
+      }
+      85% {
+        opacity: 0.88;
+        filter: blur(0px);
+      }
+      100% {
+        transform: translateY(-130vh) translateX(var(--drift-end)) rotate(var(--rot-end)) scale(0.9);
+        opacity: 0;
+        filter: blur(12px);
+      }
+    }
+
+    /* ==========================================================
+       3. KHUNG TRUNG TÂM: TỐI ƯU HOÀN HẢO CHO ĐIỆN THOẠI & MÁY TÍNH
+       ========================================================== */
+    .content-foreground {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 14px 64px 14px; /* Chừa khoảng trống cho thanh nhạc & tim ở đáy */
+      pointer-events: none;
+    }
+
+    .center-card {
+      width: 100%;
+      max-width: 520px;
+      max-height: 85dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(18, 11, 32, 0.72);
+      border: 1.5px solid rgba(255, 255, 255, 0.26);
+      border-radius: 30px;
+      padding: 18px 18px 14px 18px;
+      text-align: center;
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      box-shadow: 
+        0 25px 65px rgba(0, 0, 0, 0.7),
+        0 0 50px rgba(255, 107, 139, 0.28),
+        inset 0 2px 6px rgba(255, 255, 255, 0.4);
+      pointer-events: auto;
+      position: relative;
+      overflow-y: auto;
+      scrollbar-width: none;
+      opacity: 0;
+      transform: scale(0.9) translateY(25px);
+      filter: blur(15px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .center-card::-webkit-scrollbar { display: none; }
+
+    .center-card.revealed {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0px);
+    }
+
+    .text-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255, 107, 139, 0.24), rgba(192, 132, 252, 0.24));
+      border: 1px solid rgba(255, 182, 193, 0.45);
+      color: #ffd1dc;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.2px;
+      box-shadow: 0 4px 14px rgba(255, 107, 139, 0.2);
+    }
+
+    .gratitude-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(1.9rem, 5.8vw, 2.75rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #ffffff 10%, #ffb6c8 50%, #ff6b8b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+      line-height: 1.22;
+      filter: drop-shadow(0 3px 12px rgba(255, 107, 139, 0.38));
+    }
+
+    .gratitude-message {
+      font-family: 'Quicksand', sans-serif;
+      font-size: clamp(0.84rem, 2.5vw, 0.98rem);
+      color: var(--text-sub);
+      line-height: 1.62;
+      font-weight: 600;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+      letter-spacing: 0.1px;
+    }
+
+    .gratitude-message p {
+      margin-bottom: 6px;
+    }
+    .gratitude-message p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-text {
+      color: var(--secondary-gold);
+      font-weight: 700;
+    }
+
+    /* ==========================================================
+       4. BỨC ẢNH CUỐI Ở TRUNG TÂM - HIỂN THỊ ĐẦY ĐỦ 100% KHÔNG CẮT
+       ========================================================== */
+    .center-photo-container {
+      position: relative;
+      margin: 4px 0 6px 0;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+      /* Nở bừng xuất hiện ở trung tâm sau khi mở thiệp */
+      opacity: 0;
+      transform: scale(0.6) translateY(25px);
+      filter: blur(25px);
+      transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .center-photo-container.climax-show {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0px);
+    }
+
+    .center-photo-frame {
+      position: relative;
+      padding: 4px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,182,193,0.7), rgba(192,132,252,0.8));
+      box-shadow: 
+        0 16px 45px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(255, 107, 139, 0.65);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      animation: centerBreathing 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes centerBreathing {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.65), 0 0 35px rgba(255, 107, 139, 0.5);
+      }
+      100% {
+        transform: scale(1.025);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.75), 0 0 55px rgba(255, 182, 193, 0.85);
+      }
+    }
+
+    /* THẤY HẾT 100% ẢNH TRÊN CẢ ĐIỆN THOẠI & MÁY TÍNH */
+    .center-photo-frame img {
+      max-height: clamp(175px, 34dvh, 290px);
+      width: auto;
+      max-width: 78vw;
+      object-fit: contain;
+      display: block;
+      border-radius: 16px;
+      background: #100b1a;
+      transition: transform 0.5s ease;
+    }
+
+    .center-photo-container:hover .center-photo-frame img {
+      transform: scale(1.03);
+    }
+
+    .center-halo {
+      position: absolute;
+      inset: -9px;
+      border-radius: 26px;
+      border: 1.5px dashed rgba(255, 200, 215, 0.75);
+      pointer-events: none;
+      animation: haloPulse 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes haloPulse {
+      0% { opacity: 0.45; transform: scale(0.99); }
+      100% { opacity: 0.95; transform: scale(1.02); }
+    }
+
+    .center-caption {
+      margin-top: 8px;
+      font-family: 'Charm', cursive;
+      font-size: clamp(1.05rem, 3.2vw, 1.25rem);
+      font-weight: 700;
+      color: #ffe0e9;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      filter: drop-shadow(0 2px 8px rgba(255, 107, 139, 0.45));
+    }
+
+    .tap-hint {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #cbb8e3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 3px;
+      opacity: 0.85;
+    }
+
+    /* ==========================================================
+       GIAO DIỆN MÁY TÍNH / MÀN HÌNH NGANG (DESKTOP >= 820px)
+       Xếp 2 cột sang trọng để ảnh dọc trung tâm hiển thị TO & RÕ NÉT
+       ========================================================== */
+    @media (min-width: 820px) {
+      .center-card {
+        max-width: 820px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+        padding: 28px 34px;
+        text-align: left;
+      }
+
+      .text-column {
+        align-items: flex-start;
+        flex: 1.15;
+      }
+
+      .gratitude-title {
+        font-size: 2.75rem;
+        margin-bottom: 12px;
+      }
+
+      .gratitude-message {
+        font-size: 1.02rem;
+        line-height: 1.72;
+        margin-bottom: 14px;
+      }
+
+      .gratitude-message p {
+        margin-bottom: 10px;
+      }
+
+      .center-photo-container {
+        flex: 0.85;
+        margin: 0;
+      }
+
+      .center-photo-frame img {
+        max-height: min(56dvh, 430px);
+        max-width: 300px;
+      }
+
+      .tap-hint {
+        justify-content: flex-start;
+        margin-top: 8px;
+      }
+    }
+
+    /* ==========================================================
+       5. THANH ĐIỀU KHIỂN NHẠC & THẢ TIM DƯỚI ĐÁY
+       ========================================================== */
+    .bottom-bar {
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 25;
+      background: rgba(20, 14, 34, 0.82);
+      border: 1.5px solid rgba(255, 107, 139, 0.4);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      padding: 6px 16px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6), 0 0 20px rgba(255,107,139,0.28);
+      white-space: nowrap;
+    }
+
+    .control-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 30px;
+      transition: all 0.25s ease;
+    }
+
+    .control-btn:hover, .control-btn:active {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .divider-dot {
+      width: 1px;
+      height: 16px;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .heart-btn.liked i {
+      color: #ff4757;
+      fill: #ff4757;
+    }
+
+    .music-btn.playing .music-disc {
+      animation: spinDisc 4s linear infinite;
+      color: #ff9ebb;
+    }
+
+    @keyframes spinDisc {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* LIGHTBOX PHÓNG TO ẢNH */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(6, 4, 12, 0.94);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-modal img {
+      max-width: 95%;
+      max-height: 88dvh;
+      border-radius: 20px;
+      box-shadow: 0 25px 70px rgba(0,0,0,0.95);
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MÀN HÌNH CHÀO MỞ THIỆP & KÍCH HOẠT NHẠC NỀN -->
+  <div class="welcome-overlay" id="welcomeOverlay" onclick="startExperience()">
+    <div class="envelope-box" onclick="event.stopPropagation(); startExperience()">
+      <div class="envelope-icon">💌</div>
+      <h2 class="envelope-title">Gửi Những Bông Hồng TMORE</h2>
+      <p class="envelope-sub">
+        Những người con trai TMORE có một món quà tinh thần nho nhỏ muốn gửi đến các bạn nữ nhân dịp 19/11 🌸✨
+      </p>
+      <button class="open-card-btn">
+        <i data-lucide="music" style="width: 18px; height: 18px;"></i>
+        <span>Mở Thiệp & Bật Nhạc 🌸</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- LAYER NỀN HUYỀN ẢO & HẠT DỄ THƯƠNG -->
+  <div class="magic-canvas" id="magicCanvas">
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
+  </div>
+
+  <!-- LAYER CÁC ẢNH BAY NỔI XUNG QUANH KHUNG CHỮ VÀ ẢNH CUỐI -->
+  <div class="floating-photos-stage" id="photoStage"></div>
+
+  <!-- KHUNG TRUNG TÂM: LỜI CẢM ƠN 19/11 + ẢNH CUỐI CÙNG HIỆN ĐẦY ĐỦ 100% -->
+  <div class="content-foreground">
+    <main class="center-card" id="centerCard">
+      
+      <!-- CỘT CHỮ LỜI CẢM ƠN -->
+      <div class="text-column">
+        <div class="badge-pill">
+          <i data-lucide="sparkles" style="width: 13px; height: 13px;"></i>
+          <span>Happy International Men's Day • 19/11 👦🏻💌</span>
+        </div>
+
+        <h1 class="gratitude-title">Gửi Những Bông Hồng TMORE 🌸</h1>
+
+        <div class="gratitude-message" id="gratitudeText">
+          <p>
+            Thay mặt những người con trai TMORE 👦🏻✨, chúng mình xin gửi lời cảm ơn chân thành và sâu sắc nhất đến các bạn nữ nhân <span class="highlight-text">Ngày Quốc tế Đàn ông (19/11)</span> 🌸🎉.
+          </p>
+          <p>
+            Cảm ơn những món quà vô cùng ý nghĩa cùng sự chuẩn bị chu đáo, ngọt ngào mà các bạn đã dành trọn thời gian và tâm huyết trao tặng 🎁💖.
+          </p>
+          <p>
+            Cảm ơn những <span class="highlight-text">"bông hồng"</span> xinh đẹp của đại gia đình TMORE rất nhiều! Chúc các bạn luôn rạng rỡ, ngập tràn niềm vui và hạnh phúc! 💐🥰✨
+          </p>
+        </div>
+
+        <div class="tap-hint">
+          <i data-lucide="hand" style="width: 13px; height: 13px;"></i>
+          <span>Chạm vào bất kỳ bức ảnh nào để phóng to xem rõ</span>
+        </div>
+      </div>
+
+      <!-- CỘT ẢNH TRUNG TÂM (HIỂN THỊ TRỌN VẸN 100% KHÔNG BỊ CẮT) -->
+      <div class="center-photo-container" id="centerPhotoContainer" onclick="openLightbox('1795074620780_2012630921395466044_6942213359900437893_3541b22feb709b61d193cfc2ea98127f.jpg')">
+        <div class="center-photo-frame">
+          <div class="center-halo"></div>
+          <img src="1795074620780_2012630921395466044_6942213359900437893_3541b22feb709b61d193cfc2ea98127f.jpg" alt="Đại gia đình TMORE">
+        </div>
+        <div class="center-caption">
+          <span>🌸 Cảm ơn những bông hồng tuyệt vời của TMORE 🌸</span>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- THANH ĐIỀU KHIỂN NHẠC & THẢ TIM ĐÁY MÀN HÌNH -->
+  <div class="bottom-bar">
+    <button class="control-btn music-btn" id="musicBtn" onclick="toggleMusic()">
+      <i data-lucide="disc" class="music-disc" style="width: 17px; height: 17px;"></i>
+      <span id="musicStatus">Nhạc nền: Bật 🎵</span>
+    </button>
+    <div class="divider-dot"></div>
+    <button class="control-btn heart-btn" id="likeBtn" onclick="toggleLike()">
+      <i data-lucide="heart" id="heartIcon" style="width: 16px; height: 16px;"></i>
+      <span id="likeCount">Thả tim 💖</span>
+    </button>
+  </div>
+
+  <!-- LIGHTBOX PHÓNG TO ẢNH -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">
+      <i data-lucide="x" style="width: 22px; height: 22px;"></i>
+    </button>
+    <img id="lightboxImg" src="" alt="Enlarged view">
+  </div>
+
+  <!-- JAVASCRIPT: HỆ THỐNG NHẠC PIANO/MUSIC-BOX ẤM ÁP + HIỆU ỨNG ẢNH BAY -->
+  <script>
+    lucide.createIcons();
+
+    // ==========================================================
+    // 1. HỆ THỐNG NHẠC NỀN DU DƯƠNG (WEB AUDIO PIANO & MUSIC BOX)
+    // Tự động tạo giai điệu Canon / Gratitude ngọt ngào, 100% không bao giờ lỗi mạng
+    // ==========================================================
+    let audioCtx = null;
+    let isPlayingMusic = false;
+    let musicInterval = null;
+    let masterGain = null;
+
+    // Giai điệu hợp âm & nốt nhạc ấm áp (Tone C Major / A Minor lãng mạn)
+    const melodySequence = [
+      // Bar 1: Cmaj7
+      { bass: 130.81, chord: [261.63, 329.63, 392.00, 493.88], notes: [659.25, 587.33, 523.25, 587.33] },
+      // Bar 2: G/B
+      { bass: 123.47, chord: [246.94, 293.66, 392.00, 493.88], notes: [587.33, 493.88, 392.00, 493.88] },
+      // Bar 3: Am7
+      { bass: 110.00, chord: [220.00, 261.63, 329.63, 392.00], notes: [523.25, 440.00, 329.63, 523.25] },
+      // Bar 4: Em7
+      { bass: 164.81, chord: [196.00, 246.94, 329.63, 392.00], notes: [493.88, 392.00, 329.63, 392.00] },
+      // Bar 5: Fmaj7
+      { bass: 174.61, chord: [261.63, 349.23, 440.00, 523.25], notes: [440.00, 523.25, 659.25, 587.33] },
+      // Bar 6: C/E
+      { bass: 164.81, chord: [261.63, 329.63, 392.00, 523.25], notes: [523.25, 392.00, 329.63, 392.00] },
+      // Bar 7: Dm7
+      { bass: 146.83, chord: [261.63, 293.66, 349.23, 440.00], notes: [440.00, 523.25, 587.33, 523.25] },
+      // Bar 8: G7sus4 -> G
+      { bass: 196.00, chord: [246.94, 293.66, 392.00, 493.88], notes: [587.33, 659.25, 587.33, 493.88] }
+    ];
+
+    let currentBar = 0;
+    let currentStep = 0;
+
+    function initAudioEngine() {
+      if (audioCtx) return;
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioContextClass();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.35, audioCtx.currentTime);
+      masterGain.connect(audioCtx.destination);
+    }
+
+    // Hàm gảy 1 nốt nhạc với âm sắc ấm áp như Piano & Music Box
+    function playWarmNote(freq, duration, volume = 0.2, type = 'sine', delay = 0) {
+      if (!audioCtx || !isPlayingMusic) return;
+      const now = audioCtx.currentTime + delay;
+
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const noteGain = audioCtx.createGain();
+
+      osc1.type = type;
+      osc1.frequency.setValueAtTime(freq, now);
+
+      // Hòa âm bậc 2 nhẹ tạo tiếng chuông Music Box lung linh
+      osc2.type = 'triangle';
+      osc2.frequency.setValueAtTime(freq * 2, now);
+
+      const osc2Gain = audioCtx.createGain();
+      osc2Gain.gain.setValueAtTime(0.08, now);
+
+      // Envelope mềm mại (Attack nhẹ, Decay ngân vang như đàn Piano)
+      noteGain.gain.setValueAtTime(0.001, now);
+      noteGain.gain.linearRampToValueAtTime(volume, now + 0.04);
+      noteGain.gain.exponentialRampToValueAtTime(volume * 0.4, now + duration * 0.4);
+      noteGain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+      osc1.connect(noteGain);
+      osc2.connect(osc2Gain);
+      osc2Gain.connect(noteGain);
+      noteGain.connect(masterGain);
+
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + duration + 0.05);
+      osc2.stop(now + duration + 0.05);
+    }
+
+    function tickMusicStep() {
+      if (!isPlayingMusic || !audioCtx) return;
+      const bar = melodySequence[currentBar];
+
+      // Phách đầu mỗi ô nhịp: đánh nốt Bass ấm + rải hợp âm Piano
+      if (currentStep === 0) {
+        playWarmNote(bar.bass, 2.6, 0.22, 'sine', 0);
+        bar.chord.forEach((cFreq, idx) => {
+          playWarmNote(cFreq, 2.2, 0.08, 'sine', idx * 0.07);
+        });
+      }
+
+      // Giai điệu Music Box chính
+      const melodyFreq = bar.notes[currentStep];
+      if (melodyFreq) {
+        playWarmNote(melodyFreq, 1.4, 0.16, 'sine', 0);
+      }
+
+      currentStep++;
+      if (currentStep >= 4) {
+        currentStep = 0;
+        currentBar = (currentBar + 1) % melodySequence.length;
+      }
+    }
+
+    function startMusic() {
+      initAudioEngine();
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      if (isPlayingMusic) return;
+      isPlayingMusic = true;
+      updateMusicUI();
+      tickMusicStep();
+      musicInterval = setInterval(tickMusicStep, 580);
+    }
+
+    function stopMusic() {
+      isPlayingMusic = false;
+      if (musicInterval) {
+        clearInterval(musicInterval);
+        musicInterval = null;
+      }
+      updateMusicUI();
+    }
+
+    function toggleMusic() {
+      if (isPlayingMusic) {
+        stopMusic();
+      } else {
+        startMusic();
+      }
+    }
+
+    function updateMusicUI() {
+      const btn = document.getElementById('musicBtn');
+      const status = document.getElementById('musicStatus');
+      if (isPlayingMusic) {
+        btn.classList.add('playing');
+        status.innerText = 'Nhạc: Đang phát 🎵';
+      } else {
+        btn.classList.remove('playing');
+        status.innerText = 'Nhạc: Đã tắt 🔇';
+      }
+    }
+
+    // ==========================================================
+    // 2. KỊCH BẢN MỞ THIỆP & HIỆU ỨNG TRÌNH DIỄN
+    // ==========================================================
+    let experienceStarted = false;
+    function startExperience() {
+      if (experienceStarted) return;
+      experienceStarted = true;
+
+      // Ẩn màn hình chào
+      document.getElementById('welcomeOverlay').classList.add('hidden');
+
+      // Phát nhạc nền ấm áp
+      startMusic();
+
+      // Hiện khung lời cảm ơn trước
+      setTimeout(() => {
+        document.getElementById('centerCard').classList.add('revealed');
+      }, 150);
+
+      // Bắn hiệu ứng hoa & tim chúc mừng nhẹ nhàng
+      setTimeout(burstCuteEmojis, 400);
+
+      // Sau 2.4 giây: Bức ảnh cuối cùng ở trung tâm nở bừng xuất hiện!
+      setTimeout(() => {
+        document.getElementById('centerPhotoContainer').classList.add('climax-show');
+      }, 2400);
+    }
+
+    // ==========================================================
+    // 3. 14 BỨC ẢNH KỶ NIỆM BAY NỔI XUNG QUANH KHUNG CHỮ & ẢNH CUỐI
+    // ==========================================================
+    const surroundingPhotos = [
+      { src: "1795074329138_2012630921395466044_6942213359900437893_7d2f54c5ff77b877763308601ca9b770.jpg", ratio: 1 },
+      { src: "1795074329633_2012630921395466044_6942213359900437893_fa31625dc418631efa49b70859827390.jpg", ratio: 1 },
+      { src: "1795074330164_2012630921395466044_6942213359900437893_b8c76fc99350f1efef6d5d6f4ce9ac17.jpg", ratio: 1.45 },
+      { src: "1795074330797_2012630921395466044_6942213359900437893_803a46867d31124231aa5b9a9fac5557.jpg", ratio: 1.33 },
+      { src: "1795074331493_2012630921395466044_6942213359900437893_c95b2359144915bd7d68775d5e0194e0(1).jpg", ratio: 1.45 },
+      { src: "1795074333023_2012630921395466044_6942213359900437893_e5351fa45c7e6305b162c7bf45cf669c.jpg", ratio: 1 },
+      { src: "1795074333630_2012630921395466044_6942213359900437893_e9e7cb3bfb186917a84e31922d7d95eb.jpg", ratio: 1 },
+      { src: "1795074334084_2012630921395466044_6942213359900437893_141fd873ac1b2de709613996fb458f23.jpg", ratio: 1 },
+      { src: "1795074334571_2012630921395466044_6942213359900437893_30bf304b56e44a21aaca46b8433680c3.jpg", ratio: 1 },
+      { src: "1795074335045_2012630921395466044_6942213359900437893_d18cb93b325f2b5a0a731aa84088a181.jpg", ratio: 1 },
+      { src: "1795074472320_2012630921395466044_6942213359900437893_72c9376beb1cd5e2de57b34190801d5e.jpg", ratio: 1.45 },
+      { src: "1795074512529_2012630921395466044_6942213359900437893_78160120b8cd17131f2dfdffd4e3c24c.jpg", ratio: 1.4 },
+      { src: "785758871_18189261496393361_6293604272068657872_n.jpg", ratio: 1.33 },
+      { src: "902584551_18112692170233388_3561501919974458527_n.jpg", ratio: 1.33 }
+    ];
+
+    const cuteStickers = ['🌸', '🫧', '✨', '💖', '⭐', '🌷', '🧸', '💕', '🥰', '💌', '🎵'];
+    const photoStage = document.getElementById('photoStage');
+    let photoQueue = [...surroundingPhotos];
+
+    function getNextPhoto() {
+      if (photoQueue.length === 0) {
+        photoQueue = [...surroundingPhotos].sort(() => Math.random() - 0.5);
+      }
+      return photoQueue.shift();
+    }
+
+    function spawnSurroundingPhoto() {
+      const bubble = document.createElement('div');
+      bubble.classList.add('photo-bubble');
+
+      const isMobile = window.innerWidth <= 819;
+      const photoItem = getNextPhoto();
+      
+      // Kích thước chuẩn theo từng loại màn hình
+      const baseWidth = isMobile ? (Math.random() * 26 + 78) : (Math.random() * 38 + 115);
+      const width = baseWidth;
+      const height = baseWidth * photoItem.ratio;
+
+      const winW = window.innerWidth;
+      let left;
+      const zone = Math.random();
+      
+      if (zone < 0.44) {
+        // Cánh trái
+        left = Math.random() * (winW * 0.34 - width + 10);
+      } else if (zone < 0.88) {
+        // Cánh phải
+        left = winW * 0.66 + Math.random() * (winW * 0.34 - width);
+      } else {
+        // Phía sau khung giữa
+        left = (winW - width) / 2 + (Math.random() * 160 - 80);
+      }
+
+      left = Math.max(6, Math.min(left, winW - width - 6));
+
+      const duration = isMobile ? (Math.random() * 5 + 11) : (Math.random() * 7 + 13);
+
+      const rotStart = (Math.random() * 20 - 10) + 'deg';
+      const rotMid = (Math.random() * 14 - 7) + 'deg';
+      const rotEnd = (Math.random() * 24 - 12) + 'deg';
+      const driftMid = (Math.random() * 60 - 30) + 'px';
+      const driftEnd = (Math.random() * 100 - 50) + 'px';
+
+      bubble.style.setProperty('--rot-start', rotStart);
+      bubble.style.setProperty('--rot-mid', rotMid);
+      bubble.style.setProperty('--rot-end', rotEnd);
+      bubble.style.setProperty('--drift-mid', driftMid);
+      bubble.style.setProperty('--drift-end', driftEnd);
+
+      bubble.style.width = `${width}px`;
+      bubble.style.height = `${height}px`;
+      bubble.style.left = `${left}px`;
+      bubble.style.animationDuration = `${duration}s`;
+
+      const stickerIcon = cuteStickers[Math.floor(Math.random() * cuteStickers.length)];
+
+      bubble.innerHTML = `
+        <div class="glare"></div>
+        <img src="${photoItem.src}" alt="Kỷ niệm TMORE" loading="lazy">
+        <div class="sticker">${stickerIcon}</div>
+      `;
+
+      bubble.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openLightbox(photoItem.src);
+      });
+
+      photoStage.appendChild(bubble);
+
+      setTimeout(() => {
+        bubble.remove();
+      }, duration * 1000);
+    }
+
+    for (let i = 0; i < 7; i++) {
+      setTimeout(spawnSurroundingPhoto, i * 1300);
+    }
+    setInterval(spawnSurroundingPhoto, 2300);
+
+    // 4. SINH CÁC HẠT DỄ THƯƠNG BAY LÊN
+    const magicCanvas = document.getElementById('magicCanvas');
+    function spawnCuteFloater() {
+      const item = document.createElement('div');
+      item.classList.add('cute-floater');
+      item.innerText = cuteStickers[Math.floor(Math.random() * cuteStickers.length)];
+      
+      const left = Math.random() * 100;
+      const size = Math.random() * 15 + 16;
+      const duration = Math.random() * 7 + 8;
+
+      item.style.left = `${left}%`;
+      item.style.fontSize = `${size}px`;
+      item.style.animationDuration = `${duration}s`;
+
+      magicCanvas.appendChild(item);
+
+      setTimeout(() => item.remove(), duration * 1000);
+    }
+
+    for (let i = 0; i < 12; i++) {
+      setTimeout(spawnCuteFloater, i * 400);
+    }
+    setInterval(spawnCuteFloater, 900);
+
+    // 5. LIGHTBOX PHÓNG TO ẢNH
+    function openLightbox(src) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    // 6. BẮN TIM
+    let liked = false;
+    function toggleLike() {
+      const btn = document.getElementById('likeBtn');
+      const text = document.getElementById('likeCount');
+      liked = !liked;
+      if (liked) {
+        btn.classList.add('liked');
+        text.innerText = 'Đã thả tim 💖';
+        burstCuteEmojis();
+      } else {
+        btn.classList.remove('liked');
+        text.innerText = 'Thả tim 💖';
+      }
+    }
+
+    function burstCuteEmojis() {
+      const emojis = ['💖', '🌸', '✨', '🫧', '🌷', '🥰', '💕', '🎁'];
+      for (let i = 0; i < 22; i++) {
+        const el = document.createElement('div');
+        el.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        el.style.position = 'fixed';
+        el.style.left = `${50 + (Math.random() * 40 - 20)}%`;
+        el.style.bottom = '70px';
+        el.style.fontSize = `${Math.random() * 20 + 20}px`;
+        el.style.pointerEvents = 'none';
+        el.style.transition = 'all 1.3s cubic-bezier(0.16, 1, 0.3, 1)';
+        el.style.zIndex = '99999';
+        document.body.appendChild(el);
+
+        setTimeout(() => {
+          el.style.transform = `translate(${Math.random() * 260 - 130}px, -${Math.random() * 300 + 150}px) scale(1.6) rotate(${Math.random() * 60 - 30}deg)`;
+          el.style.opacity = '0';
+        }, 20);
+
+        setTimeout(() => el.remove(), 1400);
+      }
+    }
+  </script>
+</body>
+</html>
